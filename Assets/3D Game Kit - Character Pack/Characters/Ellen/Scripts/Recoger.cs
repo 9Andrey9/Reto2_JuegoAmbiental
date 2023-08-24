@@ -8,7 +8,9 @@ public class Recoger : MonoBehaviour
     public GameObject floatingCanvasPrefab; 
     private List<GameObject> activeFloatingCanvases = new List<GameObject>(); 
     private GameObject currentlyInteractingObject; 
+    private AudioSource audioBotarBasura;
     public ScoreManager scoreManager;
+    public AudioSource audioDing;
 
     //public GameObject inventarioFullText; 
     public TextMeshProUGUI mensajeTMPro;
@@ -17,6 +19,11 @@ public class Recoger : MonoBehaviour
     private int puntosGanados = 1;
     private int puntosActuales = 0;
     private int puntosMaximos = 5;
+
+    void Start()
+    {
+        audioBotarBasura = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,6 +39,7 @@ public class Recoger : MonoBehaviour
 
         if (other.CompareTag("Contenedor"))
         {
+            audioBotarBasura.Play();
             puntosActuales = 0;
             MostrarMensaje("Basura depositada");
         }
@@ -67,6 +75,7 @@ public class Recoger : MonoBehaviour
                 scoreManager.SumarPuntos(puntosGanados); 
                 Destroy(currentlyInteractingObject);
                 currentlyInteractingObject = null;
+                audioDing.Play();
             }
             if (puntosActuales == puntosMaximos)
             {
@@ -84,6 +93,7 @@ public class Recoger : MonoBehaviour
     public void MostrarMensaje(string mensaje)
     {
         mensajeTMPro.text = mensaje;
+        
     }
 
 }

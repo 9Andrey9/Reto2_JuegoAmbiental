@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;   
     public int puntos = 0;
     public GameObject basura;
+    public GameObject zona;
 
     public void SumarPuntos(int cantidadPuntos)
     {
@@ -20,6 +21,7 @@ public class ScoreManager : MonoBehaviour
         if (puntos == 40)
         {
             Destroy(basura);
+            Destroy(zona);
         }
     }
 
