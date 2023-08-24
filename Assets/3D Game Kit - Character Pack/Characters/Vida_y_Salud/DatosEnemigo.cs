@@ -20,20 +20,10 @@ public class DatosEnemigo : MonoBehaviour
 
     public Enemigo enemigo;
 
-    public GameObject antorchas;//////////////
-
-    public DiaNoche dianoche;
 
     public GameObject TextFinal;
 
-    public GameObject TriggerAbrirJaulas;
-    
-    public GameObject TriggerAbrirJaulas1;
-
-
     public Navmesh nav;
-
-    public GameObject CanvasPausa;
 
     public GameObject danio;
     
@@ -89,13 +79,9 @@ public class DatosEnemigo : MonoBehaviour
 
                 TextFinal.SetActive(true);
                 Destroy(TextFinal, 10f);
-                TriggerAbrirJaulas.SetActive(true);
-                TriggerAbrirJaulas1.SetActive(true);
-                dianoche.min = 360f;
                 
                 
-                antorchas.SetActive(false);
-                CanvasPausa.SetActive(false);
+        
                 
             }
                 
