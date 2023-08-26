@@ -8,6 +8,7 @@ public class DiaNoche : MonoBehaviour
     public float min, grados;
     public float timeSpeed = 1;
     public Light luna;
+    public GameObject luces;
 
     void Update()
     {
@@ -22,11 +23,13 @@ public class DiaNoche : MonoBehaviour
         {
             this.GetComponent<Light>().enabled = false;
             luna.enabled = true;
+            luces.SetActive(true);
         }
         else 
         {
             this.GetComponent<Light>().enabled = true;
-            luna.enabled = false;  
+            luna.enabled = false; 
+            luces.SetActive(false); 
         }
     }
 }

@@ -5,7 +5,7 @@ public class Reforestacion : MonoBehaviour
 {
     public Material newMaterial;
     public GameObject[] objectsToInstantiate;
-    public string[] messages; // Mensajes correspondientes a cada objeto
+    public string[] messages; 
     public int maxInstances = 5;
 
     private GameObject terrainToChange;
@@ -27,8 +27,8 @@ public class Reforestacion : MonoBehaviour
         if (collision.CompareTag("Terreno"))
         {
             terrainToChange = collision.gameObject;
-            materialChanged = false; // Reiniciar el estado del material cambiado
-            currentInstanceIndex = 0; // Reiniciar el índice de instancias
+            materialChanged = false; 
+            currentInstanceIndex = 0; 
         }
     }
 
@@ -68,7 +68,6 @@ public class Reforestacion : MonoBehaviour
                 Vector3 center = terrainToChange.transform.position;
                 instantiatedObjects[currentInstanceIndex] = Instantiate(objectsToInstantiate[currentInstanceIndex], center, Quaternion.identity);
 
-                // Mostrar el mensaje correspondiente al objeto instanciado
                 recogerMensaje.MostrarMensaje(messages[currentInstanceIndex]);
 
                 audio.Play();
