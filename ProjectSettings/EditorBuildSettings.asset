@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/ParqueEntorno/Scene/Menu.unity
+    guid: e71075b94cc157c4880b8395bd118a1f
+  - enabled: 1
+    path: Assets/ParqueEntorno/Scene/Reto2.unity
+    guid: d2809ab9b90eea7419d8d90d4c505d35
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d9a128682ad64554d9896e64484326e5,
       type: 2}

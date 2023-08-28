@@ -6,9 +6,12 @@ public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public int puntos = 0;
+    private float timer = 100;
+    private bool isClearingMessage = false;
     public GameObject basura;
     public GameObject zona;
-
+    public GameObject humo;
+    public TextMeshProUGUI mensajeText;
     private bool isAnimating = false;
     private Vector3 originalScale;
 
@@ -32,7 +35,6 @@ public class ScoreManager : MonoBehaviour
     {
         isAnimating = true;
 
-        // Aumentar de tamaño
         float scaleFactor = 1.2f;
         float duration = 0.2f;
         Vector3 targetScale = originalScale * scaleFactor;
@@ -45,7 +47,6 @@ public class ScoreManager : MonoBehaviour
             yield return null;
         }
 
-        // Reducir de tamaño
         startTime = Time.time;
         while (Time.time < startTime + duration)
         {
@@ -59,10 +60,26 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
+        
         if (puntos == 40)
         {
+            timer -= Time.deltaTime;
             Destroy(basura);
             Destroy(zona);
+            Destroy(humo);
+            MostrarMensaje("Bien hecho, has limpiado correctamente todo el parque.");
+        
+            
         }
+
+        if (timer <= 95)
+        {
+            MostrarMensaje("");
+        }
+    }
+
+    public void MostrarMensaje(string mensaje)
+    {
+        mensajeText.text = mensaje;
     }
 }

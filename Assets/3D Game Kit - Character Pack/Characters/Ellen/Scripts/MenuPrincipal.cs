@@ -11,7 +11,7 @@ public class MenuPrincipal : MonoBehaviour
 
     public void EscenaJuego()
     {
-        SceneManager.LoadScene("NivelTresEllen");
+        SceneManager.LoadScene("Reto2");
     }
 
     public void Salir()
@@ -21,4 +21,11 @@ public class MenuPrincipal : MonoBehaviour
 
 
 
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag = "personaje")
+        {
+            SceneManager.LoadScene("Game1");
+        }
+    }*/
 }
