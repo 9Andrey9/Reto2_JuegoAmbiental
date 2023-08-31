@@ -5,15 +5,20 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public GameObject scoreTextObject;
     public int puntos = 0;
-    private float timer = 100;
+    public float timer = 100;
     private bool isClearingMessage = false;
     public GameObject basura;
     public GameObject zona;
     public GameObject humo;
+    public GameObject misionCompletada1;
+    public GameObject check1Canvas;
+    public GameObject flechaReforestacion;
     public TextMeshProUGUI mensajeText;
     private bool isAnimating = false;
     private Vector3 originalScale;
+    
 
     private void Start()
     {
@@ -63,19 +68,41 @@ public class ScoreManager : MonoBehaviour
         
         if (puntos == 40)
         {
-            timer -= Time.deltaTime;
+            check1Canvas.SetActive(true);
             Destroy(basura);
             Destroy(zona);
             Destroy(humo);
-            MostrarMensaje("Bien hecho, has limpiado correctamente todo el parque.");
-        
+            
+
+            timer -= Time.deltaTime;
+            if (timer <= 100 && timer >= 99)
+            {
+                MostrarMensaje("Bien hecho, has limpiado correctamente todo el parque.");
+                Destroy(scoreTextObject);
+            }
+
+            if (timer <= 94 && timer >= 93)
+            {
+                MostrarMensaje("Es hora de empezar la reforestación, dirígite a donde marca la flecha roja");
+                flechaReforestacion.SetActive(true);
+            }
+
+            if (timer <= 89 && timer >= 88)
+            {
+                MostrarMensaje("");
+                misionCompletada1.SetActive(true);
+            }
+
+            if (timer <= 85 && timer >= 84)
+            {
+                misionCompletada1.SetActive(false);
+                puntos = 0;
+                
+            }
+            
             
         }
-
-        if (timer <= 95)
-        {
-            MostrarMensaje("");
-        }
+        
     }
 
     public void MostrarMensaje(string mensaje)

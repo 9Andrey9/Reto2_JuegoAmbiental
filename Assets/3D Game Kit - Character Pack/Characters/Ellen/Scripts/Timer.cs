@@ -13,10 +13,12 @@ public class Timer : MonoBehaviour
     public CharacterController jugador;
     public MiniMapComponent miniMapComponent;
     public GameObject miniMapa;
+    public MenuPausa menu;
     public GameObject basura;
     public GameObject contenedores;
     public GameObject canvasPlayer;
     public GameObject zona; 
+    public GameObject misiones;
     
     // Start is called before the first frame update
     void Start()
@@ -63,7 +65,7 @@ public class Timer : MonoBehaviour
 
         if(timer <= 77 && timer >= 76)
         {   
-            MostrarMensaje("Tú labor es muy sencilla, solo tines que recoger la basura que se encuentra tirada a lo largo y ancho del parque.");
+            MostrarMensaje("Tú labor es muy sencilla, recoger la basura que se encuentra tirada a lo largo y ancho del parque.");
         }
 
         if(timer <= 73 && timer >= 72)
@@ -76,6 +78,7 @@ public class Timer : MonoBehaviour
             MostrarMensaje("Por suerte, contamos con esta herramienta que nos ayudará a ubicar de manera rápida todos los objetos.");
             miniMapa.SetActive(true);
             miniMapComponent.enabled = true;
+            //menu.enabled = true; 
         }
 
         if(timer <= 65 && timer >= 64)
@@ -120,6 +123,7 @@ public class Timer : MonoBehaviour
             canvasPlayer.SetActive(true);
             jugador.enabled = true;
             zona.SetActive(true);
+            misiones.SetActive(true);
         }
 
         if(timer <= 43 && timer >= 42)

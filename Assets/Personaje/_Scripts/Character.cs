@@ -81,6 +81,7 @@ namespace NaughtyCharacter
 
             _characterController = GetComponent<CharacterController>();
             _characterAnimator = GetComponent<CharacterAnimator>();
+            
         }
 
         private void Update()

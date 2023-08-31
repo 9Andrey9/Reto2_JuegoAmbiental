@@ -14,7 +14,14 @@ public class Reforestacion : MonoBehaviour
     private int currentInstanceIndex = 0;
     private bool materialChanged = false;
 
+    public GameObject indicador;
+    public GameObject misionCompletada2;
+    public GameObject checkCanvas2;
+
     public AudioSource audio;
+
+    // Variable para llevar el registro del puntaje
+    public int score = 0;
 
     public void Start()
     {
@@ -29,6 +36,11 @@ public class Reforestacion : MonoBehaviour
             terrainToChange = collision.gameObject;
             materialChanged = false; 
             currentInstanceIndex = 0; 
+        }
+
+        if (collision.CompareTag("Reforestacion"))
+        {
+            Destroy(indicador);
         }
     }
 
@@ -72,6 +84,38 @@ public class Reforestacion : MonoBehaviour
 
                 audio.Play();
                 currentInstanceIndex++;
+
+                if (currentInstanceIndex == maxInstances)
+                {
+                    
+                    score++;
+                    Debug.Log("Puntaje actual: " + score);
+
+                    if (score == 12)
+                    {
+                        misionCompletada2.SetActive(true);
+                        checkCanvas2.SetActive(true);
+
+                    }
+
+                    BoxCollider terrainCollider = terrainToChange.GetComponent<BoxCollider>();
+                    if (terrainCollider != null)
+                    {
+                        terrainCollider.enabled = false;
+
+                        // Destruir el objeto hijo que contiene el CanvasRot
+                        Transform canvasRotChild = terrainToChange.transform.Find("CanvasTerreno");
+                        if (canvasRotChild != null)
+                        {
+                            Destroy(canvasRotChild.gameObject);
+                        }
+                    }
+
+                    // Aquí podrías realizar alguna acción adicional si todos los objetos se han instanciado
+                }
+
+
+
             }
         }
     }

@@ -1,44 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using UnityEngine.AI;
 
 public class MenuPausa : MonoBehaviour
 {
     public GameObject menuDePausa;
+    public GameObject items;
+    public GameObject console;
     private bool menuOn;
     public Animator ani;
-    
-    public GameObject Slot;
-    
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+    
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             menuOn = !menuOn;
         }
 
-        if(menuOn == true)
+        if (menuOn)
         {
-            menuDePausa.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            //Time.timeScale = 0;
-  
-
+            PonerPausa();
         }
         else
         {
-            menuDePausa.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            //Time.timeScale = 1;
-           
-
-            
+            QuitarPausar();
         }
     }
 
+    public void PonerPausa()
+    {
+        
+        menuDePausa.SetActive(true);
+        items.SetActive(false);
+        console.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0;
+
+    }
+
+    public void QuitarPausar()
+    {
+        
+        menuDePausa.SetActive(false);
+        items.SetActive(true);
+        console.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
+        
+
+    }
 }

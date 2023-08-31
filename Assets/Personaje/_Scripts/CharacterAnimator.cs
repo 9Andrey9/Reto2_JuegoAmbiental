@@ -18,6 +18,7 @@ namespace NaughtyCharacter
         {
             _animator = GetComponent<Animator>();
             _character = GetComponent<Character>();
+
         }
 
         public void UpdateState()

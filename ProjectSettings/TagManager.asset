@@ -11,6 +11,8 @@ TagManager:
   - Basura
   - Contenedor
   - Terreno
+  - arma
+  - Reforestacion
   layers:
   - Default
   - TransparentFX
